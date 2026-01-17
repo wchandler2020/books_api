@@ -8,10 +8,8 @@ I choose to use Django for a few reasons:
 
 # Requirements
 Python 3.x
-
 pip
-
-It is recommended to use a virtual environment.
+virtual environment.
 
 Setup
 1. Clone the repository
