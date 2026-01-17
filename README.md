@@ -36,8 +36,7 @@ Otherwise:
 
 bash
 pip install django djangorestframework pytest pytest-django
-4. Apply migrations
-Even though the API uses an in‑memory data store, Django requires base migrations:
+4. Apply migrations, even if the API isn't using the DB. Django will throw an error without this step:
 
 bash
 python manage.py migrate
