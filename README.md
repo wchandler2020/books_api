@@ -20,8 +20,7 @@ git clone https://github.com/wchandler2020/books_api.git
 cd your folder
 
 3. Create and activate a virtual environment
-4. 
-python -m venv venv
+4. python -m venv venv
 
 # Windows
 venv\Scripts\activate
