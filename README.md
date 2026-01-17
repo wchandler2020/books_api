@@ -1,7 +1,12 @@
-Book Catalog API
-This API is built user Django and Django REST Framework and an in‑memory storage (a Python dict) for data persistence.
+## Book Catalog API
+This API is built using Django and Django REST Framework and an in‑memory storage (a Python dict) for data persistence.
 
-Requirements
+I choose to use Django for a few reasons: 
+1. Familiarity
+2. it has a mature ecosystem,
+3. class‑based views, and support for serialization and validation, which was important since a database was not being used.
+
+# Requirements
 Python 3.x
 
 pip
@@ -11,16 +16,17 @@ It is recommended to use a virtual environment.
 Setup
 1. Clone the repository
 bash
-git clone 
-cd <your-repo-folder>
-2. Create and activate a virtual environment
-bash
-python -m venv .venv
+git clone https://github.com/wchandler2020/books_api.git
+cd your folder
+
+3. Create and activate a virtual environment
+4. 
+python -m venv venv
 
 # Windows
-.venv\Scripts\activate
+venv\Scripts\activate
 
-# macOS / Linux
+# macOS or Linux
 source .venv/bin/activate
 3. Install dependencies
 If requirements.txt exists:
@@ -46,7 +52,7 @@ By default, the API will be available at:
 Base URL: http://127.0.0.1:8000/
 
 API Endpoints
-All data is stored in memory for the lifetime of the server process.
+All data is stored in memory while the server is running.
 
 1. Create / List books
 Endpoint
@@ -58,6 +64,7 @@ GET /books/
 POST /books/
 
 Create a new book.
+You can do this using an API client like Postman or Insomnia
 
 Request body (JSON)
 
@@ -92,7 +99,7 @@ If validation fails, a 400 response with error details is returned.
 
 GET /books/
 
-Return a paginated list of books with optional filtering and search.
+To return a list of books with optional filtering and search.
 
 Query parameters
 
@@ -188,9 +195,9 @@ json
   "unique_authors": 2
 }
 Running Tests
-Tests cover the main endpoints, validation behavior, and error handling.
+Tests cover the main endpoints, validation, and error handling.
 
-With pytest
+# Using pytest
 From the project root:
 
 bash
@@ -198,15 +205,7 @@ pytest
 With Django’s test runner (optional)
 bash
 python manage.py test
-Design choices
-Framework: Django REST Framework for its mature ecosystem, explicit class‑based views, and strong support for serialization and validation.
 
-Storage: In‑memory dict (BOOKS) to avoid database setup, as specified by the challenge.
 
-Type safety: Python type hints for views, helper structures (Book dataclass), and serializers.
 
-Validation: Year range and required fields enforced at the serializer level; invalid query params (like non‑integer year) produce meaningful 400 responses.
 
-Testing: Standard Python testing stack (pytest + pytest-django or Django’s test runner) for easy execution via a single command.
-
-You can adjust wording and details (e.g., ids, status codes) to exactly match your final implementation.
