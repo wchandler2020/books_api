@@ -1,29 +1,35 @@
 ## Book Catalog API
 This API is built using Django and Django REST Framework and an in‑memory storage (a Python dict) for data persistence.
 
-I choose to use Django for a few reasons: 
+I chose to use Django for a few reasons:
+
 1. Familiarity
-2. it has a mature ecosystem,
-3. class‑based views, and support for serialization and validation, which was important since a database was not being used.
+2. It has a mature ecosystem
+3. Class‑based views and support for serialization and validation, which was important since a database was not being used.
+​
 
 # Requirements
 Python 3.x
-pip
-virtual environment.
 
-Setup
+pip
+
+Virtual environment
+
+# Setup
 1. Clone the repository
 bash
 git clone https://github.com/wchandler2020/books_api.git
-cd your folder
+cd books_api
+2. Create and activate a virtual environment
+bash
+python -m venv .venv
+Windows:
 
-3. Create and activate a virtual environment
-4. python -m venv venv
+bash
+.venv\Scripts\activate
+macOS / Linux:
 
-# Windows
-venv\Scripts\activate
-
-# macOS or Linux
+bash
 source .venv/bin/activate
 3. Install dependencies
 If requirements.txt exists:
@@ -34,7 +40,8 @@ Otherwise:
 
 bash
 pip install django djangorestframework pytest pytest-django
-4. Apply migrations, even if the API isn't using the DB. Django will throw an error without this step:
+4. Apply migrations
+Even if the API isn't using the DB, Django will throw an error without this step:
 
 bash
 python manage.py migrate
@@ -47,9 +54,9 @@ By default, the API will be available at:
 
 Base URL: http://127.0.0.1:8000/
 
-API Endpoints
 All data is stored in memory while the server is running.
 
+# API Endpoints
 1. Create / List books
 Endpoint
 
@@ -58,9 +65,8 @@ POST /books/
 GET /books/
 
 POST /books/
-
 Create a new book.
-You can do this using an API client like Postman or Insomnia
+You can do this using an API client like Postman or Insomnia.
 
 Request body (JSON)
 
@@ -94,8 +100,7 @@ json
 If validation fails, a 400 response with error details is returned.
 
 GET /books/
-
-To return a list of books with optional filtering and search.
+Returns a list of books with optional filtering and search.
 
 Query parameters
 
@@ -130,8 +135,7 @@ json
   "page": 1,
   "page_size": 10
 }
-If year cannot be parsed as an integer, a 400 response is returned with an appropriate error message.
-
+1. If year cannot be parsed as an integer, a 400 response is returned with an appropriate error message.
 2. Retrieve a single book
 Endpoint
 
@@ -164,7 +168,7 @@ bash
 DELETE /books/1/
 Response
 
-204 No Content or 200 OK (depending on your chosen implementation) if the book is deleted.
+204 No Content (or 200 OK depending on your implementation) if the book is deleted.
 
 404 Not Found if the book does not exist.
 
@@ -193,15 +197,12 @@ json
 Running Tests
 Tests cover the main endpoints, validation, and error handling.
 
-# Using pytest
-From the project root:
+Using pytest
+From the project root (same folder as manage.py and pytest.ini):
 
 bash
 pytest
-With Django’s test runner (optional)
+pytest‑django uses the DJANGO_SETTINGS_MODULE shown in the pytest.ini (book_catalog_api.settings) to configure Django and run the tests.
+​
 bash
 python manage.py test
-
-
-
-
